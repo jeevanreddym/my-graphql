@@ -3,6 +3,6 @@
 URL:
 localhost:9005/graphql?path=/graphql
 
-![img.png](imgs/img1.png)
+![img.png](z-imgs/img1.png)
 
-![img.png](imgs/img2.png)
+![img.png](z-imgs/img2.png)
