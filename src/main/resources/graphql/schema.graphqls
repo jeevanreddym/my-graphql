@@ -1,0 +1,82 @@
+
+# Query is used to retrieve data.
+type Query {
+    authors: [Author]
+    authorById(authorId: ID!): Author
+
+    vehicles(count: Int):[Vehicle]
+    vehicle(id: ID):Vehicle
+
+    schedule(coach: Coach): [FitnessClass]
+}
+
+# Mutation is used to change data.
+type Mutation {
+    addBook(book: BookInput!): Book
+
+    createVehicle(type: String!, modelCode: String!, brandName: String, launchDate: String): Vehicle
+}
+
+# Subscription is used to create connection, read data & keep the connection open when data changes.
+type Subscription {
+    addBook(book: BookInput): Book
+}
+
+input BookInput {
+    title: String!
+    publisher: String
+    authorId: ID!
+}
+
+
+# Types.
+type Author {
+    id: ID!
+    name: String!
+    books: [Book]
+}
+
+type Book {
+    id: ID!
+    title: String!
+    publisher: String
+    rating: Rating
+}
+
+type Rating {
+    rating: String
+    stars: String
+}
+
+
+
+
+
+
+type Vehicle {
+    id: ID!,
+    type: String,
+    modelCode: String,
+    brandName: String,
+    launchDate: String
+}
+
+
+# Get schedule of our favourite coach.
+enum Coach {
+    PHILIP
+    PETER
+}
+
+enum Difficulty {
+    BEGINNER
+    ADVANCED
+}
+
+type FitnessClass {
+    id: ID
+    coach: Coach
+    startsAt: String!
+    endsAt: String!
+    difficulty: Difficulty!
+}
